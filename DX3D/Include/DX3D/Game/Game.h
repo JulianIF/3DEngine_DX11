@@ -28,12 +28,14 @@ namespace dx3d
 	class Game: public Base
 	{
 	public:
-		Game();
+		explicit Game(const GameDesc& desc);
 		virtual ~Game() override;
 
 		virtual void run() final;
 	private:
-		std::unique_ptr<Window> m_display{};
-		bool m_isRunning{ true };
+		std::unique_ptr<Logger> _loggerPtr{};
+		std::unique_ptr<GraphicsEngine> _graphicsEngine{};
+		std::unique_ptr<Window> _display{};
+		bool _isRunning{ true };
 	};
 }

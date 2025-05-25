@@ -20,14 +20,22 @@
 
 #include <DX3D/Game/Game.h>
 #include <DX3D/Window/Window.h>
+#include <DX3D/Graphics/GraphicsEngine.h>
+#include <DX3D/Core/Logger.h>
 
-dx3d::Game::Game()
+dx3d::Game::Game(const GameDesc& desc) :
+	Base({*std::make_unique<Logger>(desc.logLevel).release()}),
+	_loggerPtr(&_logger)
 {
-	m_display = std::make_unique<Window>();
+	_graphicsEngine = std::make_unique<GraphicsEngine>(GraphicsEngineDesc{_logger});
+	_display = std::make_unique<Window>(WindowDesc{_logger});
+
+	_loggerPtr->log(Logger::LogLevel::Info, "Game Initialized");
 }
 
 dx3d::Game::~Game()
 {
+	_loggerPtr->log(Logger::LogLevel::Info, "Game deallocation started");
 }
 
 
