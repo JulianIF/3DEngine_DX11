@@ -30,8 +30,8 @@ namespace dx3d
 		virtual ~Base();
 
 		virtual Logger& getLogger() const noexcept final;
-	protected:
 
+	protected:
 		Base(const Base&) = delete;
 		Base(Base&&) = delete;
 		Base& operator = (const Base&) = delete;

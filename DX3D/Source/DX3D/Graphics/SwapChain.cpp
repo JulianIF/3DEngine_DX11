@@ -15,7 +15,7 @@ dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicResourcesDesc
 	dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 	dxgiDesc.Windowed = TRUE;
 
-	DX3DGraphicsLogErrorAndThrow(_factory.CreateSwapChain(&_device, &dxgiDesc, &_swapChain), "CreateSwapChain failed");
+	DX3DGraphicsLogThrowOnFail(_factory.CreateSwapChain(&_device, &dxgiDesc, &_swapChain), "CreateSwapChain failed");
 }
 
 

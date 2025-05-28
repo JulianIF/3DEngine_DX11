@@ -29,14 +29,14 @@ dx3d::Game::Game(const GameDesc& desc) :
 	_loggerPtr(&_logger)
 {
 	_graphicsEngine = std::make_unique<GraphicsEngine>(GraphicsEngineDesc{_logger});
-	_display = std::make_unique<Display>(DisplayDesc{ {_logger, desc.windowSize}, _graphicsEngine->getRenderSystem()});
+	_display = std::make_unique<Display>(DisplayDesc{ {_logger, desc.windowSize}, _graphicsEngine->getGraphicsDevice()});
 
 	DX3DLogInfo("Game Initialized");
 }
 
 dx3d::Game::~Game()
 {
-	DX3DLogInfo("Game deallocation started");
+	DX3DLogInfo("Game Ended");
 }
 
 

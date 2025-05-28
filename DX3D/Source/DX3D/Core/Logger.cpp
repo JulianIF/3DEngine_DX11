@@ -4,6 +4,10 @@ dx3d::Logger::Logger(LogLevel logLevel): _logLevel(logLevel)
 {
 }
 
+dx3d::Logger::~Logger()
+{
+}
+
 void dx3d::Logger::log(LogLevel level, const char* message) const
 {
 	auto logLevelToString = [](LogLevel level)
