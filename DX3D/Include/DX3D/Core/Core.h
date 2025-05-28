@@ -31,4 +31,10 @@ namespace dx3d
 	class RenderSystem;
 
 	class Logger;
+
+	class SwapChain;
+
+	class Display;
+
+	using SwapChainPtr = std::shared_ptr<SwapChain>;
 }

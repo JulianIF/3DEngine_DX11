@@ -41,7 +41,7 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPAR
 
 
 
-dx3d::Window::Window(const WindowDesc& desc) : Base(desc.base)
+dx3d::Window::Window(const WindowDesc& desc) : Base(desc.base), _size(desc.size)
 {
 	auto registerWindowClassFunction = []()
 		{
@@ -61,7 +61,7 @@ dx3d::Window::Window(const WindowDesc& desc) : Base(desc.base)
 		DX3DLogErrorAndThrow("RegisterClassEx failed.");
 	}
 
-	RECT rc{ 0,0,1280,720 };
+	RECT rc{ 0,0,_size.width,_size.height };
 	AdjustWindowRect(&rc, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, false);
 
 	_handle = CreateWindowEx(NULL, MAKEINTATOM(windowClassId), L"3DEngine DirectX11 | C++",
