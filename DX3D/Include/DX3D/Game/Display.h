@@ -7,6 +7,7 @@ namespace dx3d
 	public:
 		explicit Display(const DisplayDesc& desc);
 
+		SwapChain& getSwapChain() noexcept;
 	private:
 		SwapChainPtr _swapChain{};
 	};

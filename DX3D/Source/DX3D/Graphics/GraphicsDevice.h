@@ -13,7 +13,9 @@ namespace dx3d
 		explicit GraphicsDevice(const GraphicsDeviceDesc& desc);
 		virtual ~GraphicsDevice() override;
 		SwapChainPtr createSwapChain(const SwapChainDesc& desc) const;
+		DeviceContextPtr createDeviceContext();
 
+		void executeCommandList(DeviceContext& context);
 	private: 
 		GraphicResourcesDesc getGraphicResourcesDesc() const noexcept;
 		Microsoft::WRL::ComPtr<ID3D11Device> _d3dDevice{};

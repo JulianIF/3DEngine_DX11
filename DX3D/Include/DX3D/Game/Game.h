@@ -37,5 +37,6 @@ namespace dx3d
 		std::unique_ptr<GraphicsEngine> _graphicsEngine{};
 		std::unique_ptr<Display> _display{};
 		bool _isRunning{ true };
+		void onInternalUpdate();
 	};
 }

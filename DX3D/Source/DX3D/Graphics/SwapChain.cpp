@@ -16,6 +16,23 @@ dx3d::SwapChain::SwapChain(const SwapChainDesc& desc, const GraphicResourcesDesc
 	dxgiDesc.Windowed = TRUE;
 
 	DX3DGraphicsLogThrowOnFail(_factory.CreateSwapChain(&_device, &dxgiDesc, &_swapChain), "CreateSwapChain failed");
+
+	reloadBuffers();
+}
+
+void dx3d::SwapChain::present(bool vsync)
+{
+	DX3DGraphicsLogThrowOnFail(_swapChain->Present(vsync, 0), "Present Failed");
+}
+
+void dx3d::SwapChain::reloadBuffers()
+{
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> buffer{};
+	DX3DGraphicsLogThrowOnFail(_swapChain->GetBuffer(0, IID_PPV_ARGS(&buffer)), "GetBuffer Failed");
+
+	DX3DGraphicsLogThrowOnFail(_device.CreateRenderTargetView(buffer.Get(), nullptr, &_renderTargetView), "CreateRenderTargetView Failed");
+
+
 }
 
 

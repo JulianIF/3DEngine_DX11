@@ -36,7 +36,12 @@ dx3d::Game::Game(const GameDesc& desc) :
 
 dx3d::Game::~Game()
 {
-	DX3DLogInfo("Game Ended");
+	DX3DLogInfo("Game Ending and Deallocating");
 }
 
+void dx3d::Game::onInternalUpdate()
+{
+	_graphicsEngine->render(_display->getSwapChain());
+
+}
 

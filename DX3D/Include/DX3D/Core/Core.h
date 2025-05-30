@@ -35,6 +35,8 @@ namespace dx3d
 	class SwapChain;
 
 	class Display;
+	class DeviceContext;
 
 	using SwapChainPtr = std::shared_ptr<SwapChain>;
+	using DeviceContextPtr = std::shared_ptr<DeviceContext>;
 }
