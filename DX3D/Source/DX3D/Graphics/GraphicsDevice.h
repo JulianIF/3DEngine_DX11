@@ -14,7 +14,8 @@ namespace dx3d
 		virtual ~GraphicsDevice() override;
 		SwapChainPtr createSwapChain(const SwapChainDesc& desc) const;
 		DeviceContextPtr createDeviceContext();
-
+		ShaderBinaryPtr compileShader(const ShaderCompileDesc& sDesc);
+		GraphicsPipelineStatePtr createGraphicsPipelineState(const GraphicsPipelineStateDesc& desc);
 		void executeCommandList(DeviceContext& context);
 	private: 
 		GraphicResourcesDesc getGraphicResourcesDesc() const noexcept;

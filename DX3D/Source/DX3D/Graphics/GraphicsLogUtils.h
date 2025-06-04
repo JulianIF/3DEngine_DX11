@@ -17,8 +17,13 @@ namespace dx3d
 				}
 				else
 				{
-
+					DX3DLogThrow(logger, std::runtime_error, Logger::LogLevel::Error, "Shader Compilatin Failed");
 				}
+			}
+
+			if (errorMsg)
+			{
+				DX3DLog(logger, Logger::LogLevel::Warning, errorMsg)
 			}
 		};
 	}
@@ -32,3 +37,9 @@ namespace dx3d
 			DX3DLogThrowError(message);\
 		}\
 	}
+
+#define DX3DGraphicsCheckShaderCompile(hr, errorBlob)\
+{\
+	auto res = (hr);\
+	dx3d::GraphicLogUtils::CheckShaderCompile(getLogger(), res, errorBlob);\
+}
