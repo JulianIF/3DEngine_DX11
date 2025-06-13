@@ -65,6 +65,13 @@ namespace dx3d
 		const ShaderBinary& ps;
 	};
 
+	struct VertexBufferDesc
+	{
+		const void* vertexList{};
+		uint32_t vertexListSize{};
+		uint32_t vertexSize{};
+	};
+
 	struct GameDesc
 	{
 		Rect windowSize{ 1280, 720 };
